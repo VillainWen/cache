@@ -30,11 +30,14 @@ class Cache {
 
     public function __construct(array $config) {
         $this->config = $config;
-        $adapter = '';
+
         if (!isset($this->config['adapter'])) {
-            $adapter = 'MultiFileAdapter';
+            $this->config['adapter'] = 'MultiFileAdapter';
         }
+
+        $adapter = $this->config['adapter'];
         $application = "\\Villain\\Cache\\Adapter\\{$adapter}";
+
         $this->manager = new $application($this->config);
     }
 
