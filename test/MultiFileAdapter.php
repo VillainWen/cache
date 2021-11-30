@@ -2,12 +2,11 @@
 namespace Villain\Cache;
 require_once '../vendor/autoload.php';
 
-use Villain\Cache\Adapter\MultiFileAdapter;
+$config = [
+    'adapter' => 'MultiFileAdapter'
+];
 
-$a = new MultiFileAdapter();
-$a->set('aaaab', 'bbbb');
-$b = $a->get('aaaa');
-var_dump($b);
+$cache = new Cache($config);
+$cache->set('key', 'value');
 
-$c = $a->getSavePath();
-var_dump($c);
+var_dump($cache->get('key'));

@@ -5,10 +5,11 @@ use Villain\Cache\Adapter\FileAdapter;
 
 require_once '../vendor/autoload.php';
 
-$a = new FileAdapter();
+$config = [
+    'dataFile' => __DIR__ . '/catch.txt'
+];
 
-$a->setDataFile(__DIR__ . '/text.txt');
-$a->set('a', 'b');
+$cache = new Cache($config);
+$cache->set('key', 'value');
 
-$c = $a->get('a');
-var_dump($c);
+var_dump($cache->get('key'));

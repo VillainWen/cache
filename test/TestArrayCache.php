@@ -16,12 +16,9 @@ namespace Villain\Cache;
 
 require_once '../vendor/autoload.php';
 
-use Villain\Cache\Adapter\ArrayAdapter;
+$config = [];
 
-$a = new ArrayAdapter();
-$a->set('label', 'value');
-$b = $a->get('label');
-var_dump($b);
-$c = $a->getData();
+$cache = new Cache($config);
+$cache->set('key1', 'value');
 
-var_dump($c);
+var_dump($cache->get('key'));
