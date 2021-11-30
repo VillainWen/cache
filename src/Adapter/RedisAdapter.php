@@ -16,6 +16,7 @@
 namespace Villain\Cache\Adapter;
 
 
+use RuntimeException;
 use Villain\Cache\Concern\AbstractAdapter;
 
 class RedisAdapter extends AbstractAdapter {
@@ -32,8 +33,12 @@ class RedisAdapter extends AbstractAdapter {
      */
     protected string $prefix = 'villain_cache:';
 
-    public function __construct() {
-        parent::__construct();
+    public function init() {
+        if (!isset($this->config['redis'])) {
+            throw new RuntimeException('must set an datafile for storage cache data');
+        }
+
+        $this->setRedis($this->config['redis']);
     }
 
     /**

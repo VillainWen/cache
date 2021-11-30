@@ -27,8 +27,18 @@ use Villain\Cache\Exception\InvalidArgumentException;
 
 abstract class AbstractAdapter implements CacheAdapterInterface {
 
-    public function __construct() {
+    /**
+     * 配置参数
+     * @var array
+     */
+    protected array $config;
+
+    public function __construct(array $config) {
+        $this->config = $config;
+        $this->init();
     }
+
+    public function init() {}
 
     /**
      * 缓存有效期的key值

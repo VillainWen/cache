@@ -30,6 +30,12 @@ class FileAdapter extends ArrayAdapter {
      * 初始化
      */
     public function init() {
+        if (!isset($this->config['dataFile'])) {
+            throw new RuntimeException('must set an datafile for storage cache data');
+        }
+
+        $this->setDataFile($this->config['dataFile']);
+
         if (!$this->dataFile) {
             throw new RuntimeException('must set an datafile for storage cache data');
         }

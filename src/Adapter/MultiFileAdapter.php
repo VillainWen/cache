@@ -17,11 +17,6 @@ use function unlink;
  */
 class MultiFileAdapter extends AbstractAdapter {
 
-    public function __construct() {
-        parent::__construct();
-        $this->init();
-    }
-
     /**
      * 缓存文件位置
      * @var string
