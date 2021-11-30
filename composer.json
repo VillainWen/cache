@@ -1,6 +1,13 @@
 {
     "name": "villain/cache",
     "license": "MIT",
+    "description": "Cache Component for PHP",
+    "keywords": [
+        "php",
+        "psr-16",
+        "simple-cache",
+        "cache"
+    ],
     "authors": [
         {
             "name": "李晓文",
