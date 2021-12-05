@@ -41,6 +41,21 @@ class Cache {
         $this->manager = new $application($this->config);
     }
 
+    /**
+     * @param $key
+     * @return bool
+     */
+    public function has($key): bool {
+        return $this->manager->has($key);
+    }
+
+    /**
+     * 设置
+     * @param $key
+     * @param $value
+     * @param int $ttl
+     * @return bool
+     */
     public function set($key, $value, $ttl = 0):bool {
         return $this->manager->set($key, $value, $ttl);
     }
@@ -60,5 +75,26 @@ class Cache {
      */
     public function delete($key):bool {
         return $this->manager->delete($key);
+    }
+
+    /**
+     * 获取多个
+     * @param $key
+     * @param int $default
+     * @return iterable
+     * @throws InvalidArgumentException
+     */
+    public function getMultiple($key, $default = 0): iterable {
+        return $this->manager->getMultiple($key, $default);
+    }
+
+    /**
+     * 批量设置
+     * @param $values
+     * @param null $ttl
+     * @return bool
+     */
+    public function setMultiple($values, $ttl = null): bool {
+        return $this->manager->setMultiple($values, $ttl);
     }
 }
